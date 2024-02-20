@@ -1,0 +1,8 @@
+Flask==2.0.1
+Werkzeug==2.0.1
+openai
+python-dotenv
+scikit-learn
+numpy
+os
+matplotlib

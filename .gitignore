@@ -1,0 +1,27 @@
+# Virtual Environment
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# VS Code directory
+.vscode/
+
+# openai API key
+.env
+
+# important files
+files/*
+TCUBA6_BIM/*
+data/*
+_COPY/*
+paper/*
+result/*
+src/2_MIE/main/*

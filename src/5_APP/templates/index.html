@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShmMie</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="w-shm-chi">結構健康診斷</div>
+    <div class="w-shm-eng">STRUCTURAL HEALTH MONITORING</div>
+    <div class="w-using">USING</div>
+    <div class="w-mie-chi">多尺度增量熵</div>
+    <div class="w-mie-eng">MULTISCALE INCREMENTAL ENTROPY</div>
+    <div class="container">
+      <div class="w-case">CASE 德馨公教大樓</div>
+      <form class="upload_area" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt">
+        <button class="button" type="submit">請按此上傳感測器資料（.txt檔），將為您進行住宅結構安全診斷，謝謝您！</button>
+    </form>
+</body>
+</html>
