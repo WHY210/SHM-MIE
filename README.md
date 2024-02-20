@@ -38,5 +38,4 @@ pip install -r requirements.txt
 
 **Contact information:**
 
-Contributor: Hsun-Yen Wu
-E-mail: d109612054.c@nycu.edu.tw
+Contributor: Hsun-Yen Wu (d109612054.c@nycu.edu.tw)
