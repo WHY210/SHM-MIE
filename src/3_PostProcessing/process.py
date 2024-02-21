@@ -9,16 +9,16 @@ plt.rcParams['figure.max_open_warning'] = 1000
 class DataProcessor:
     def __init__(self, building_type, channel, scale):
         self.building_type = building_type
-        self.path_MIE =  f'..\\result\\{building_type}\\MIE'
-        self.path_DI =  f'..\\result\\{building_type}\\DI'
-        self.path_mean = f'..\\result\\{building_type}\\MM'
+        self.path_MIE =  f'..\\..\\result\\{building_type}\\MIE'
+        self.path_DI =  f'..\\..\\result\\{building_type}\\DI'
+        self.path_mean = f'..\\..\\result\\{building_type}\\MM'
         self.channel = channel
         self.scale = scale
 
     def path(self):
-        os.makedirs(f'..\\result\\{self.building_type}\\MIE', exist_ok=True)
-        os.makedirs(f'..\\result\\{self.building_type}\\DI', exist_ok=True)
-        os.makedirs(f'..\\result\\{self.building_type}\\MM', exist_ok=True)
+        os.makedirs(f'..\\..\\result\\{self.building_type}\\MIE', exist_ok=True)
+        os.makedirs(f'..\\..\\result\\{self.building_type}\\DI', exist_ok=True)
+        os.makedirs(f'..\\..\\result\\{self.building_type}\\MM', exist_ok=True)
         print("finish path")
 
     def calculate_MinusMean(self):
@@ -41,7 +41,6 @@ class DataProcessor:
 
     def calculate_DI(self):
         os.makedirs(fr'{self.path_DI}', exist_ok=True)
-
 
         for i, file in enumerate(os.listdir(self.path_MIE)):
               
@@ -322,7 +321,7 @@ class DataProcessor:
 #     print(f'交大公教宿舍 finish{i}')
 
 for i in range(2,3):
-    NCREE = DataProcessor(f'七層鋼構架樓層破壞_{i}_3_3', 8, i)
+    NCREE = DataProcessor(f'七層鋼構架樓層破壞_一階差分_{i}_3_3', 8, i)
     # NCREE.path()
     # NCREE.calculate_DI()
     # NCREE.calculate_MinusMean()
@@ -344,9 +343,6 @@ for i in range(2,3):
     NCREE.threeD("DI", -2, 2)
     NCREE.threeD("Minus", -2, 2)
     NCREE.threeD("Mean", -2, 2)
-    
-    
-    
     
     print(f'七層鋼構架樓層破壞 finish{i}')
 

@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 資料夾路徑
-path = r'D:\0005_大專生計畫\04_MIE\result\TCUBA6_交大公教宿舍_15_3_3\MIE_SummedUp'
+print(os.getcwd())
+path = r'..\..\result\TCUBA6_交大公教宿舍_2_3_3\MIE_SummedUp'
 
 # 讀取資料夾內所有檔案，並按照檔名排序
 files = sorted(os.listdir(path))

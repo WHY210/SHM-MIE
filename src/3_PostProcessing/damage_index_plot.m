@@ -1,8 +1,8 @@
 clearvars;
 clc;
 
-input_path_TCUBA6 = "D:\0005_大專生計畫\04_MIE\result\TCUBA6_交大公教宿舍\DI";
-output_path_TCUBA6 = "D:\0005_大專生計畫\04_MIE\result\TCUBA6_交大公教宿舍\DI_plot";
+input_path_TCUBA6 = "..\..\result\TCUBA6_交大公教宿舍\DI";
+output_path_TCUBA6 = "..\..\result\TCUBA6_交大公教宿舍\DI_plot";
 
 file_numbers = [
     1994060600, 1994091600, 

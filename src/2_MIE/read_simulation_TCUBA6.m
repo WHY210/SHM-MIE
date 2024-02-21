@@ -2,14 +2,14 @@ clearvars;
 clc;
 profile on
 
-input_path_NCREE = "D:\0005_大專生計畫\04_MIE\data\real_data(V)_七層鋼構架樓層破壞";
-output_path_NCREE = "D:\0005_大專生計畫\04_MIE\result\七層鋼構架樓層破壞";
-input_path_TCUBA6 = "D:\0005_大專生計畫\04_MIE\data\TCUBA6_交大公教宿舍";
-output_path_TCUBA6 = "D:\0005_大專生計畫\04_MIE\result\TCUBA6_交大公教宿舍\";
-input_path_TCUBAA = "D:\0005_大專生計畫\04_MIE\data\TCUBAA_交大圖書館";
-output_path_TCUBAA = "D:\0005_大專生計畫\04_MIE\result\TCUBAA_交大圖書館";
-input_path_SAP2000 = "D:\0005_大專生計畫\04_MIE\data\white\模擬數據";
-output_path_SAP2000 = "D:\0005_大專生計畫\04_MIE\result\white\模擬數據";
+input_path_NCREE = "..\..\data\real_data(V)_七層鋼構架樓層破壞";
+output_path_NCREE = "..\..\\result\七層鋼構架樓層破壞";
+input_path_TCUBA6 = "..\..\data\TCUBA6_交大公教宿舍";
+output_path_TCUBA6 = "..\..\result\TCUBA6_交大公教宿舍";
+input_path_TCUBAA = "..\..\data\TCUBAA_交大圖書館";
+output_path_TCUBAA = "..\..\result\TCUBAA_交大圖書館";
+input_path_SAP2000 = "..\..\data\white\模擬數據";
+output_path_SAP2000 = "..\..\result\white\模擬數據";
 
 % 德馨公教大樓
 file_numbers = [
@@ -60,7 +60,7 @@ function mie(input_file_path, input_file_name, channel, scale, output_file_path,
     %}
 
     % 主程式 to_mie.m 位於的資料夾位置
-    cd("D:\0005_大專生計畫\04_MIE\src\main") 
+    cd("..\main") 
 
     output_MIE = zeros(channel, scale); 
     
