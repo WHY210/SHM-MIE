@@ -12,7 +12,7 @@ def rename_files(directory, old_str, new_str):
 
 
 # 請替換以下變數的值
-directory_path = r"D:\SHM-MIE\result\七層鋼構架樓層破壞_濾波_9601-13600_15_3_3\MIE"  # 指定目錄路徑
+directory_path = r"D:\SHM-MIE\result\七層鋼構架樓層破壞_20_3_3\MIE"  # 指定目錄路徑
 old_string = "Mie_"  # 要替換的舊字串
 new_string = ""  # 新字串
 
