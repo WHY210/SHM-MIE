@@ -2,8 +2,8 @@ clearvars;
 clc;
 
 % 輸入和輸出資料夾的路徑
-input_file_path = "D:\0005_大專生計畫\04_MIE\data\real_data(V)_七層鋼構架樓層破壞";
-output_file_path = "D:\0005_大專生計畫\04_MIE\data\real_data(V)_七層鋼構架樓層破壞_濾波";
+input_file_path = "..\..\data\real_data(V)_七層鋼構架樓層破壞_一階差分";
+output_file_path = "..\..\data\real_data(V)_七層鋼構架樓層破壞_一階差分+濾波";
 % 取得資料夾中的所有檔案
 file_list = dir(fullfile(input_file_path, '*.txt'));
 

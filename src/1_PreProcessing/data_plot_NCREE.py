@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-file_path = r'D:\0005_大專生計畫\04_MIE\data\real_data(V)_七層鋼構架樓層破壞_一階差分'
+file_path = r'..\..\data\real_data(V)_七層鋼構架樓層破壞_濾波+一階差分'
 
 for i, file in enumerate(os.listdir(file_path)):
     if file.endswith("txt"):

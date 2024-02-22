@@ -5,8 +5,8 @@ clc;
 cd('.\main') 
 
 % 輸入和輸出資料夾的路徑
-input_path_NCREE = '..\..\..\data\real_data(V)_七層鋼構架樓層破壞_一階差分'; 
-output_path_NCREE = '..\..\..\result\七層鋼構架樓層破壞_一階差分\MIE';
+input_path_NCREE = '..\..\..\data\real_data(V)_七層鋼構架樓層破壞_濾波'; 
+output_path_NCREE = '..\..\..\result\七層鋼構架樓層破壞_濾波_9601-13600_15_3_3\MIE';
 
 % 取得資料夾中的所有檔案
 file_list = dir(fullfile(input_path_NCREE, '*.dbl.txt'));
@@ -17,7 +17,7 @@ for i = 1:numel(file_list)
     filename = file_list(i).name;
     file_path = fullfile(input_path_NCREE, filename);
     [~, name, ~] = fileparts(filename);
-    output_filename = sprintf('Mie_%s_15_3_3.txt', name);
+    output_filename = sprintf('%s.txt', name);
     output_path = fullfile(output_path_NCREE, output_filename);
     % 調用 mie 函數
     tic
