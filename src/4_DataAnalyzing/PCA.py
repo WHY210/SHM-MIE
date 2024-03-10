@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 all_matrices = []
 files = []
-path = r'D:\0005_大專生計畫\04_MIE\result\七層鋼構架樓層破壞_20_3_3\DI_minus'
+path = r'D:\SHM-MIE\result\七層鋼構架樓層破壞_特定樓層_30_3_3\DI_Minus_1_0_x'
 
 # 載入資料並存儲到列表中
 for i, file in enumerate(os.listdir(path)):

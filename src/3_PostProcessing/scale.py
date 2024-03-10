@@ -1,11 +1,11 @@
 import os
 import numpy as np
 
-for i in range(2,20):
+for i in range(2,8):
         
     # 資料夾路徑
-    path = r'..\..\result\七層鋼構架樓層破壞_20_3_3\MIE'
-    output_path = fr'..\..\result\七層鋼構架樓層破壞_{i}_3_3\MIE'
+    path = r'.\result\七層鋼構架樓層破壞_20_3_3\_MIE'
+    output_path = fr'.\result\七層鋼構架樓層破壞_{i}_3_3\_MIE'
 
     # 確保新資料夾路徑存在
     os.makedirs(output_path, exist_ok=True)

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory,
 import os
 from dotenv import load_dotenv
 from openai import OpenAI, OpenAIError
@@ -80,6 +80,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+def model():
+    return send_from_directory(app.static_folder, 'model.js')
 
 @app.route('/upload', methods=['POST'])
 def upload():
