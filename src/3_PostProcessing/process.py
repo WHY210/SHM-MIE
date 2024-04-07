@@ -99,7 +99,7 @@ class DataProcessor:
                             
 
                 elif "TCUBA6_交大公教宿舍" in self.building_type:
-                    reference = (np.loadtxt(f'{self.path_MIE}\\Mie_1994060600.txt'))
+                    reference = (np.loadtxt(f'{self.path_MIE}\\1994060600.txt'))
 
                     ## EVALUATE ##
                     evaluate = np.loadtxt(f'{self.path_MIE}\\{file}')
@@ -334,7 +334,7 @@ class DataProcessor:
 
 
 for i in range(30, 31):
-    NCREE = DataProcessor(f'min微振段_七層鋼構架樓層破壞_特定樓層_{i}_3_3', 5, i)
+    NCREE = DataProcessor(f'TCUBA6_交大公教宿舍_濾波_{i}_3_3', 6, i)
     NCREE.standerdize(False, "MIEnotstd", "MIE")
     NCREE.calculate_DI()
     # NCREE.standerdize(False, "DInotstd", "DI")

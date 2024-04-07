@@ -2,10 +2,13 @@ clearvars;
 clc;
 profile on
 
+scale = 30;
+channel = 24;
+channels = [1, 2, 4, 6, 8];
 input_path_NCREE = "..\..\data\real_data(V)_七層鋼構架樓層破壞";
 output_path_NCREE = "..\..\\result\七層鋼構架樓層破壞";
-input_path_TCUBA6 = "..\..\data\TCUBA6_交大公教宿舍";
-output_path_TCUBA6 = "..\..\result\TCUBA6_交大公教宿舍";
+input_path_TCUBA6 = "C:\Users\dulci\OneDrive - 國立陽明交通大學\桌面\NYCU\0006_大專生計畫\SHM-MIE\data\TCUBA6_交大公教宿舍_濾波";
+output_path_TCUBA6 = "C:\Users\dulci\OneDrive - 國立陽明交通大學\桌面\NYCU\0006_大專生計畫\SHM-MIE\result\TCUBA6_交大公教宿舍_濾波";
 input_path_TCUBAA = "..\..\data\TCUBAA_交大圖書館";
 output_path_TCUBAA = "..\..\result\TCUBAA_交大圖書館";
 input_path_SAP2000 = "..\..\data\white\模擬數據";
@@ -29,19 +32,37 @@ file_numbers = [
     ];
 
 
+cd('.\main') 
+[status, message, messageid] = mkdir(output_path_TCUBA6);
+file_list = dir(fullfile(input_path_TCUBA6, '*.txt'));
+for i = 1:numel(file_list)
 
+    filename = file_list(i).name;
+    file_path = fullfile(input_path_TCUBA6, filename);
+    [~, name, ~] = fileparts(filename);
+    output_filename = sprintf('%s.txt', name);
+    output_path = fullfile(output_path_TCUBA6, output_filename);
+    % 調用 mie 函數
+    tic
+    mie(input_path_TCUBA6, filename, channel, scale, output_path_TCUBA6, output_filename, channels);
+    toc
+    fprintf(['COMPLETE: ', filename, '\n']);
+end
+
+%{
 input_filenames = strcat(num2str(file_numbers'), ".txt"); % matlab會把前面的0去掉==自己加
 output_filenames = strcat("Mie_19", num2str(file_numbers'), "_15_3_3.txt"); % 或20
 
 for i = 1:length(file_numbers)
-    mie(input_path_TCUBA6, input_filenames{i}, 24, 15, output_path_TCUBA6, output_filenames{i});
+    mie(input_path_TCUBA6, input_filenames{i}, 24, 30, output_path_TCUBA6, output_filenames{i});
     fprintf(input_filenames{i});
     fprintf("   ")
 end
+%}
 
 
 %% FUNCTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function mie(input_file_path, input_file_name, channel, scale, output_file_path, output_file_name)
+function mie(input_file_path, input_file_name, channel, scale, output_file_path, output_file_name, channels)
 
     % 讀取輸入（TCUBA6那種）
     input_file = fopen(fullfile(input_file_path, input_file_name));

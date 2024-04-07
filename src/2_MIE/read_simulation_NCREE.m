@@ -3,10 +3,10 @@ clc;
 
 %% VARIABLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 scale = 30;
-channel = 5;
-channels = [1, 2, 4, 6, 8];
-input_path_NCREE = '..\..\..\data\real_data(V)_七層鋼構架樓層破壞'; 
-output_path_NCREE = sprintf('..\\..\\..\\result\\min微振段_七層鋼構架樓層破壞_特定樓層_%d_3_3\\MIE', scale);
+channel = 6;
+channels = [2, 8, 11, 14, 17, 20];
+input_path_NCREE = '..\..\..\data\TCUBA6_交大公教宿舍_濾波';
+output_path_NCREE = sprintf('..\\..\\..\\result\\TCUBA6_交大公教宿舍_濾波_%d_3_3\\MIE', scale);
 
 
 %% MAIN CODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,7 +33,7 @@ function mie(input_file_path, input_file_name, channel, scale, output_file_path,
 
     % 讀取輸入（NCREE那種）
     input_file = fopen(fullfile(input_file_path, input_file_name));
-    TotalChannels = textscan(input_file, ' %f %f %f %f %f %f %f %f ');
+    TotalChannels = textscan(input_file, ' %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f');
     fclose(input_file);
 
     min_segment_start = zeros(1, channel); % 初始化最小震幅的段落起始索引矩陣
@@ -45,12 +45,12 @@ function mie(input_file_path, input_file_name, channel, scale, output_file_path,
     for i = 1:channel % 這邊要改，自己對應（這邊2跟下面i-1跟7是因為樓地板沒算進去
         % data = transpose(TotalChannels{2*i-1});     
         data = transpose(TotalChannels{channels(i)});
-        [min_segment, min_segment_start, min_segment_end] = calculate_min_segment(i, data, 4000, min_segment_start, min_segment_end, channels);
-        %{
-        min_segment = data(9601:13600);
-        min_segment_start = zeros(1, channel) + 9601;
-        min_segment_end =  zeros(1, channel) + 13600;
-        %}
+        %[min_segment, min_segment_start, min_segment_end] = calculate_min_segment(i, data, 4000, min_segment_start, min_segment_end, channels);
+        
+        min_segment = data(0001:2500); %9601:13600);
+        min_segment_start = zeros(1, channel) + 0001; %9601;
+        min_segment_end =  zeros(1, channel) + 2500;  %13600;
+        
         output_MIE(i, :) = to_mie(min_segment, scale, 3, 3);
     end
     figure('Position', [50, 50, 2000, 800]);
@@ -109,7 +109,7 @@ function plot_and_save_figures(TotalChannels, min_segment_start, min_segment_end
         
         hold on;  
         plot(min_segment_start(i):min_segment_end(i), data(min_segment_start(i):min_segment_end(i)), 'r', 'LineWidth', 1);
-        ylim([-0.025 0.025]);
+        ylim([-0.2 0.2]);
         set(gca, 'XScale', 'linear', 'YScale', 'linear');
         title(['Channel ', num2str(channels(i)-1), 'F'], FontSize=7);
         
@@ -118,7 +118,7 @@ function plot_and_save_figures(TotalChannels, min_segment_start, min_segment_end
     end  
 
     subplot(channel, 2, [2:2:2*channel]);
-    channel_colors = {'black', 'red', '#FC9F4D', '#77AC30', 'blue'};
+    channel_colors = {'red', '#FC9F4D', '#EDB120', '#77AC30', '#0072BD', '#7E2F8E'};
     %channel_colors = {'black', 'red', '#FC9F4D', '#EDB120', '#77AC30', 'blue', '#0072BD', '#7E2F8E'};
     
     for j = 1:channel
@@ -129,7 +129,7 @@ function plot_and_save_figures(TotalChannels, min_segment_start, min_segment_end
     end
     ylim([0 4.5]);
     set(gca, 'XScale', 'linear', 'YScale', 'linear');
-    legend('floor', '1F', '3F', '5F','7F', 'Location', 'southoutside', 'Orientation', 'horizontal');
+    legend('B2', '1F', '2F', '3F','7F','14F', 'Location', 'southoutside', 'Orientation', 'horizontal');
     %legend('floor', '1F', '2F', '3F', '4F', '5F', '6F', '7F', 'Location', 'southoutside', 'Orientation', 'horizontal');
     title('MIE for All Channels');
     xlabel('Scale');
